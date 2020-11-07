@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <Class name="org.tzi.use.gui.plugins.complexity.ComplexityMetric"
+        x="28" y="131">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="org.tzi.use.gui.plugins.complexity.IComplexityMetric"/>
+        <Association
+            destinationClassName="org.tzi.use.gui.plugins.complexity.DNNode"
+            endpointName="dnTree" kind="Simple"/>
+        <Communication destinationClassName="org.tzi.use.gui.plugins.complexity.IComplexityMetricResult"/>
+        <Communication destinationClassName="org.tzi.use.gui.plugins.complexity.DNNode"/>
+    </Class>
+    <Class
+        name="org.tzi.use.gui.plugins.complexity.ExpressionComplexityVisitor"
+        x="498" y="-59">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="org.tzi.use.uml.ocl.expr.ExpressionVisitor"/>
+        <Association
+            destinationClassName="org.tzi.use.gui.plugins.complexity.IComplexityMetric"
+            endpointName="metric" kind="Simple"/>
+        <Communication destinationClassName="org.tzi.use.gui.plugins.complexity.IComplexityMetric"/>
+    </Class>
+    <Class name="org.tzi.use.uml.ocl.expr.ExpressionVisitor" x="356" y="469">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="org.tzi.use.gui.plugins.complexity.DNNode" x="328" y="315">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="org.tzi.use.gui.plugins.complexity.DNNode"
+            endpointName="leftChild" kind="Simple">
+            <Point x="339" y="416"/>
+            <Point x="406" y="413"/>
+        </Association>
+        <Association
+            destinationClassName="org.tzi.use.gui.plugins.complexity.DNNode"
+            endpointName="rightChild" kind="Simple">
+            <Point x="335" y="271"/>
+            <Point x="405" y="270"/>
+        </Association>
+    </Class>
+    <Class name="org.tzi.use.gui.plugins.complexity.IComplexityMetric"
+        x="323" y="204">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="org.tzi.use.runtime.gui.IPluginActionDelegate" x="56" y="496">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class
+        name="org.tzi.use.gui.plugins.complexity.OCLComplexityHelpDialog"
+        x="54" y="82">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="org.tzi.use.gui.plugins.complexity.EvalOCLDialog"
+        x="38" y="-56">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="org.tzi.use.gui.plugins.complexity.OCLComplexityHelpDialog"
+            endpointName="complexityHelpDialog" kind="Simple"/>
+        <Communication destinationClassName="org.tzi.use.gui.plugins.complexity.IComplexityMetric"/>
+    </Class>
+    <Class name="org.tzi.use.gui.plugins.OCLMetricsExtent" x="54" y="424">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="org.tzi.use.runtime.gui.IPluginActionDelegate"/>
+    </Class>
+    <Class
+        name="org.tzi.use.gui.plugins.complexity.ComplexityMetricResult"
+        x="313" y="12">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="org.tzi.use.gui.plugins.complexity.IComplexityMetricResult"/>
+    </Class>
+    <Class
+        name="org.tzi.use.gui.plugins.complexity.IComplexityMetricResult"
+        x="313" y="-52">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="org.tzi.use.gui.plugins.OCLMetricsPlugin" x="54" y="585">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="org.tzi.use.runtime.impl.Plugin"/>
+    </Class>
+    <Class name="org.tzi.use.runtime.impl.Plugin" x="200" y="580">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+</ClassDiagram>
