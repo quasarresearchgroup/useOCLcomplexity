@@ -15,9 +15,9 @@ import org.tzi.use.runtime.gui.IPluginActionDelegate;
  * 
  * @author Maria Sales
  */
-public class OCLMetricsExtent implements IPluginActionDelegate {
+public class OCLComplexityExtent implements IPluginActionDelegate {
 
-	public OCLMetricsExtent() {
+	public OCLComplexityExtent() {
 	}
 
 	public void performAction(IPluginAction pluginAction) {

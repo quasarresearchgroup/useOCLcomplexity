@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?use version="5.0.1"?>
-<plugin name="OCLMetrics" version="1.1">
+<plugin name="OCLComplexity" version="1.1">
 	<actions>
 		<action label="Evaluate Expression" icon="resources/Speed.png"
-			class="org.quasar.use.gui.plugins.OCLMetricsExtent" tooltip="Evaluate Expression"
-			menu="View" menuitem="OCL Metrics" toolbaritem="plugins"
-			id="org.quasar.use.gui.plugins.OCLMetricsExtent">
+			class="org.quasar.use.gui.plugins.OCLComplexityExtent" tooltip="Evaluate Expression"
+			menu="View" menuitem="OCL Complexity" toolbaritem="plugins"
+			id="org.quasar.use.gui.plugins.OCLComplexityExtent">
 		</action>
 	</actions>
 </plugin>

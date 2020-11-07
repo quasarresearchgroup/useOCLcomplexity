@@ -1,23 +1,19 @@
 # OCL Complexity Plugin
-## (USE plugin for OCL complexity calculation on UML diagrams)
+## (USE plugin to calculate the complexity of OCL expressions)
 This project was developed within the [Software Systems Engineering group](https://ciencia.iscte-iul.pt/centres/istar-iul/groups/sse) at the [ISTAR Research Center](https://ciencia.iscte-iul.pt/centres/istar-iul) at the [ISCTE-IUL university](https://www.iscte-iul.pt/) in Lisbon, Portugal.
 
 ## Introduction
 The Unified Modeling Language (UML) [1] was created by the Object Management Group (OMG) [2], and had its first specification draft proposed in January 1997. It’s currently the standard language used in software development for specifying, visualizing, constructing, and documenting artifacts of software systems. However, UML models aren’t typically precise enough to express all relevant aspects of a specification. To fill the existing gaps on these models, a formal language was proposed. OCL (Object Constraint Language) [3] can be used to express constraints (class invariants, pre- and post- conditions, ...), which allow UML models to be more precise and unambiguous. Over the past years, several studies have been conducted to assess the benefits of using OCL alongside UML models [4, 5], which has been proven advantageous to modelers once they overcome OCL’s initial learning curve.
 
-Several support tools have been developed to assist in model-driven development, including the analysis and design phases where modelers need to interpret and write OCL expressions. These tools have their specific characteristics and provide a variety of useful functionalities including syntactic analysis, connection with the UML model, and debugging [6]. To the best of our knowledge, none of these tools provides syntax highlighting in the UML diagram for manually introduced OCL expressions, which we believe that could soften the learning curve for this language by reducing the mental burden when reading, analyzing and writing expressions.
+Several support tools have been developed to assist in model-driven development, including the analysis and design phases where modelers need to interpret and write OCL expressions. These tools have their specific characteristics and provide a variety of useful functionalities including syntactic analysis, connection with the UML model, and debugging [6]. 
 
-OCL Highlight, which was developed in Java, is a plugin for the USE tool [7] (from Bremen University) provides a new OCL evaluation dialog that offers syntax highlighting in the
-UML model when users evaluate a given OCL expression. The last version of this plugin also includes a ‘Config’ button, where the user can configure different colors for the highlight, and an action button to evaluate the complexity of OCL expressions (using metrics defined by Reynoso et al [8]).
-
-## Demo
-Is available <a href="https://youtu.be/ZVBQ7O5BFi8">here</a> and it takes less than 5 minutes to see!
+'OCL Complexity', which was developed in Java, is a plugin for the USE tool [7] (from Bremen University) provides a new OCL evaluation dialog that offers the calculation of complexity of OCL expressions (using metrics defined by Reynoso et al [8]).
 
 ## Notes (version 1.1)
 ### Installation
-Put the OclComplexity-1.1.jar file (<a href="OclComplexity-1.1.jar">Download Jar</a>) in your use-x.x.x/plugins folder.
+Put the OCLComplexity-1.1.jar file (<a href="OclComplexity-1.1.jar">Download Jar</a>) in your use-x.x.x/plugins folder.
 
-Run USE. A button with a red marker will appear on the plugins section.
+Run USE. A button with a green ruler will appear on the plugins section.
 
 ### Requirements
 Install USE: get an instalable version from Sourceforge <a href="https://sourceforge.net/projects/useocl/">here</a>.
@@ -25,8 +21,10 @@ Install USE: get an instalable version from Sourceforge <a href="https://sourcef
 ## How to use
 
 ### Calculate complexity
-1. Repeat steps 1-3 from the previous section (class diagram view is not necessary).
-2. Input the OCL expression on 'Enter OCL expression:' text box and click on 'Evaluate OCL Complexity'. Results are shown in the large text area at the bottom of the view.
+1. Open xxx.use with the model specification and instantiate it with objects and links (xxx.soil, or manually).
+2. Click on 'Create class diagram view' to open the respective class diagram. (optional)
+3. Click on 'Evaluate Expression' button to open the evaluation dialog (green ruler icon). 
+4. Input the OCL expression on 'Enter OCL expression:' text box and click on 'Evaluate OCL Complexity'. Results are shown in the large text area at the bottom of the view.
 5. Click on 'Clear' to reset the results, or simply input a new OCL expression.
 
 Click on 'Help: OCL Complexity' to explore OCL metrics definitions.
