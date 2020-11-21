@@ -7,16 +7,8 @@ public class DNNode {
 	private DNNode leftChild;
 	private DNNode rightChild;
 
-	public static DNNode createStartingNode(String className) {
-		return new DNNode(className, 0);
-	}
-
-	public static DNNode createSingleNode(String className) {
+	public static DNNode createNode(String className) {
 		return new DNNode(className, 1);
-	}
-
-	public static DNNode createDoubleNode(String className) {
-		return new DNNode(className, 2);
 	}
 
 	private DNNode(String className, int weight) {

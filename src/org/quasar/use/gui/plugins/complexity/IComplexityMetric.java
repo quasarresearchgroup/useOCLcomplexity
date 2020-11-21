@@ -24,7 +24,7 @@ public interface IComplexityMetric {
 
 	void insertAttribute(MAttribute attribute);
 
-	IComplexityMetricResult getWeight();
+	IComplexityMetricResult getResult();
 
 	void insertObjectOperation(ExpObjOp exp);
 

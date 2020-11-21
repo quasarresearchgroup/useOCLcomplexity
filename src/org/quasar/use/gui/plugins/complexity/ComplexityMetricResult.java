@@ -6,8 +6,6 @@ public class ComplexityMetricResult implements IComplexityMetricResult {
 	private int nan;
 	private int wno;
 	private int nnc;;
-	private int wnm;
-	private int npt;
 	private int nuca;
 	private int nuco;
 	private int wnn;
@@ -47,22 +45,6 @@ public class ComplexityMetricResult implements IComplexityMetricResult {
 
 	public void setNNC(int nnc) {
 		this.nnc = nnc;
-	}
-
-	public int getWNM() {
-		return Math.max(wnm, 0);
-	}
-
-	public void setWNM(int wnm) {
-		this.wnm = wnm;
-	}
-
-	public int getNPT() {
-		return Math.max(npt, 0);
-	}
-
-	public void setNPT(int npt) {
-		this.npt = npt;
 	}
 
 	public int getNUCA() {

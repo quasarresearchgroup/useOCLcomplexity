@@ -105,14 +105,14 @@ public class OCLComplexityHelpDialog extends JDialog {
 		infoBox.add(boldLine("WNM (Weighted Number of Messages):"));
         infoBox.add(line("sum of weighted messages (where the weight is defined by the number of parameters)"));
         infoBox.add(line("present in an expression."));
-//      infoBox.add(line("(Not available in this version)"));
+        infoBox.add(line("(Not available in this version)"));
         addSeparator(infoBox);
 	}
 
 	private void addNPT(JPanel infoBox) {
 		infoBox.add(boldLine("NPT (Number of Parameters whose Types are classes defined in the Class Diagram):"));
         infoBox.add(line("number of different classes and interfaces used as in/out parameters or result."));
-//        infoBox.add(line("(Not available in this version)"));
+        infoBox.add(line("(Not available in this version)"));
         addSeparator(infoBox);
 	}
 

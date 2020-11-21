@@ -8,7 +8,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
-import org.tzi.use.analysis.metrics.MeasurementStrategy;
 import org.tzi.use.uml.mm.MAttribute;
 import org.tzi.use.uml.mm.MClass;
 import org.tzi.use.uml.mm.MNavigableElement;
@@ -19,7 +18,7 @@ import org.tzi.use.uml.ocl.expr.Expression;
 
 import com.google.common.collect.Lists;
 
-public class ComplexityMetric extends MeasurementStrategy implements IComplexityMetric {
+public class ComplexityMetric implements IComplexityMetric {
 
 	// NNR
 	private Set<String> navigatedRelationships;
@@ -29,10 +28,6 @@ public class ComplexityMetric extends MeasurementStrategy implements IComplexity
 	private int wno;
 	// NNC
 	private Set<String> navigatedClasses;
-	// WNM - At this point we don't use this metric
-	private List<String> wnm;
-	// NPT - At this point we don't use this metric
-	private List<String> npt;
 	// NUCA, NUCO
 	private List<String> utilityClasses = Lists.newArrayList("CalendarDate", "Instant");
 	private Set<String> nuca;
@@ -51,8 +46,6 @@ public class ComplexityMetric extends MeasurementStrategy implements IComplexity
 		referredAttributes = new HashSet<String>();
 		wno = 0;
 		navigatedClasses = new HashSet<String>();
-		wnm = new ArrayList<String>();
-		npt = new ArrayList<String>();
 		nuca = new HashSet<String>();
 		nuco = new HashSet<String>();
 		wco = 0;
@@ -115,14 +108,14 @@ public class ComplexityMetric extends MeasurementStrategy implements IComplexity
 
 		DNNode leftChild, rightChild = null;
 		if (dnTree == null) {
-			leftChild = DNNode.createSingleNode(target.cls().name());
+			leftChild = DNNode.createNode(target.cls().name());
 		} else {
 			leftChild = dnTree;
 			if (leftChild.getClassName() != target.cls().name()) {
-				rightChild = DNNode.createSingleNode(target.cls().name());
+				rightChild = DNNode.createNode(target.cls().name());
 			}
 		}
-		DNNode parent = DNNode.createSingleNode(source.cls().name());
+		DNNode parent = DNNode.createNode(source.cls().name());
 		parent.setLeftChild(leftChild);
 		if (rightChild != null) {
 			parent.setRightChild(rightChild);
@@ -177,14 +170,12 @@ public class ComplexityMetric extends MeasurementStrategy implements IComplexity
 		}
 	}
 
-	public IComplexityMetricResult getWeight() {
+	public IComplexityMetricResult getResult() {
 		IComplexityMetricResult result = new ComplexityMetricResult();
 		result.setNNR(navigatedRelationships.size());
 		result.setNAN(referredAttributes.size());
 		result.setWNO(wno);
 		result.setNNC(navigatedClasses.size());
-		result.setWNM(wnm.size());
-		result.setNPT(npt.size());
 		result.setNUCA(nuca.size());
 		result.setNUCO(nuco.size());
 		result.setWNN(wnn);

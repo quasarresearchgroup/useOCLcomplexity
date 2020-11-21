@@ -27,14 +27,12 @@ import org.tzi.use.config.Options;
 import org.tzi.use.gui.util.CloseOnEscapeKeyListener;
 import org.tzi.use.gui.util.TextComponentWriter;
 import org.tzi.use.gui.views.diagrams.classdiagram.ClassDiagramView;
-import org.tzi.use.gui.views.evalbrowser.ExprEvalBrowser;
 import org.tzi.use.main.ChangeEvent;
 import org.tzi.use.main.ChangeListener;
 import org.tzi.use.main.Session;
 import org.tzi.use.parser.ocl.OCLCompiler;
 import org.tzi.use.uml.mm.MModel;
 import org.tzi.use.uml.mm.ModelFactory;
-import org.tzi.use.uml.ocl.expr.Evaluator;
 import org.tzi.use.uml.ocl.expr.Expression;
 import org.tzi.use.uml.ocl.expr.MultiplicityViolationException;
 import org.tzi.use.uml.sys.MSystem;
@@ -57,8 +55,6 @@ public class EvalOCLDialog extends JDialog {
 	private final JTextArea fTextIn;
 	private final JTextArea fTextOut;
 
-	private ExprEvalBrowser fEvalBrowser;
-	private Evaluator evaluator;
 	private final JButton btnEval;
 
 	private OCLComplexityHelpDialog complexityHelpDialog;
@@ -157,10 +153,6 @@ public class EvalOCLDialog extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				fTextOut.setText(null);
-				if (fEvalBrowser != null) {
-					fEvalBrowser.getFrame().setVisible(false);
-					fEvalBrowser.getFrame().dispose();
-				}
 			}
 
 		});
@@ -177,10 +169,6 @@ public class EvalOCLDialog extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				closeDialog();
-				if (fEvalBrowser != null) {
-					fEvalBrowser.getFrame().setVisible(false);
-					fEvalBrowser.getFrame().dispose();
-				}
 			}
 		});
 		dim = btnClose.getMaximumSize();
@@ -197,17 +185,7 @@ public class EvalOCLDialog extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				getRootPane().setDefaultButton(complexityBtn);
-
-				if (fEvalBrowser != null && fEvalBrowser.getFrame().isVisible()) {
-					// if evaluation browser is already open, update it as well
-					boolean evalSuccess = evaluateOclComplexity(fTextIn.getText(), true);
-
-					if (evalSuccess) {
-						fEvalBrowser.updateEvalBrowser(evaluator.getEvalNodeRoot());
-					}
-				} else {
-					evaluateOclComplexity(fTextIn.getText(), false);
-				}
+				evaluateOclComplexity(fTextIn.getText());
 			}
 		});
 		dim = complexityBtn.getMaximumSize();
@@ -264,7 +242,7 @@ public class EvalOCLDialog extends JDialog {
 		fTextOut.addKeyListener(ekl);
 	}
 
-	private boolean evaluateOclComplexity(String in, boolean evalTree) {
+	private boolean evaluateOclComplexity(String in) {
 		if (this.fSystem == null) {
 			fTextOut.setText("No system!");
 			return false;
@@ -310,10 +288,8 @@ public class EvalOCLDialog extends JDialog {
 
 		try {
 			// evaluate it with current system state
-			evaluator = new Evaluator(evalTree);
-
 			IComplexityMetric complexityMetric = new ComplexityMetric();
-			expr.processWithVisitor(new ExpressionComplexityVisitor(complexityMetric, true));
+			expr.processWithVisitor(new ExpressionComplexityVisitor(complexityMetric));
 
 			// print result
 			fTextOut.setText(getOclComplexity(complexityMetric));
@@ -326,9 +302,9 @@ public class EvalOCLDialog extends JDialog {
 	}
 
 	private String getOclComplexity(IComplexityMetric complexityMetric) {
-		IComplexityMetricResult result = complexityMetric.getWeight();
-		return String.format("NNR: %d | NAN: %d | WNO: %d | NNC: %d | WNM: %d | NPT: %d | NUCA: %d | NUCO: %d | WNN: %d | DN: %d | WCO: %d",
-				result.getNNR(), result.getNAN(), result.getWNO(), result.getNNC(), result.getWNM(), result.getNPT(), result.getNUCA(), result.getNUCO(),
+		IComplexityMetricResult result = complexityMetric.getResult();
+		return String.format("NNR: %d | NAN: %d | WNO: %d | NNC: %d | NUCA: %d | NUCO: %d | WNN: %d | DN: %d | WCO: %d",
+				result.getNNR(), result.getNAN(), result.getWNO(), result.getNNC(), result.getNUCA(), result.getNUCO(),
 				result.getWNN(), result.getDN(), result.getWCO());
 	}
 

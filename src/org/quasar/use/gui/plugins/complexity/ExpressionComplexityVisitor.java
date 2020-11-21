@@ -63,11 +63,9 @@ public class ExpressionComplexityVisitor implements ExpressionVisitor {
 
 	private Stack<MOperation> operationStack = new Stack<MOperation>();
 	private IComplexityMetric metric;
-	private boolean expandOperations;
 
-	public ExpressionComplexityVisitor(IComplexityMetric metric, boolean expandOperations) {
+	public ExpressionComplexityVisitor(IComplexityMetric metric) {
 		this.metric = metric;
-		this.expandOperations = expandOperations;
 	}
 
 	public void visitAllInstances(ExpAllInstances exp) {
@@ -197,7 +195,7 @@ public class ExpressionComplexityVisitor implements ExpressionVisitor {
 			ex.processWithVisitor(this);
 		}
 
-		if (expandOperations && exp.getOperation().hasExpression() && !operationStack.contains(exp.getOperation())) {
+		if (exp.getOperation().hasExpression() && !operationStack.contains(exp.getOperation())) {
 			operationStack.push(exp.getOperation());
 			exp.getOperation().expression().processWithVisitor(this);
 			operationStack.pop();

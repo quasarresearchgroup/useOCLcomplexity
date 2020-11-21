@@ -50,28 +50,6 @@ public interface IComplexityMetricResult {
 	void setNNC(int nnc);
 
 	/**
-	 * Weighted Number of Messages: The number of messages defined in an expression
-	 * weighted by its actual parameters. The weighted operation is carried out
-	 * according to: ∑ ( 1 + | Par(m) | ) m ∈ M(expression), where: ● M(expression):
-	 * Set of different operations2 used through messaging in an expression. ●
-	 * |Par(m)|: quantity of actual parameter of the m operation.
-	 */
-	int getWNM();
-
-	void setWNM(int wnm);
-
-	/**
-	 * Number of Parameters whose Types are classes defined in the class diagram:
-	 * This metric is specially used in pre- and post-condition expressions, and it
-	 * counts the method parameters, and the return type (also called result) used
-	 * in an expression, having each parameter/result a type representing a class or
-	 * interface defined in the class diagram.
-	 */
-	int getNPT();
-
-	void setNPT(int npt);
-
-	/**
 	 * Number of Utility Class Attributes used: The number of attributes belonging
 	 * to a utility class used in an expression. Attributes are counted once if they
 	 * belong to the same utility class and are also used more than once.
